@@ -1,20 +1,18 @@
 package com.banking.dto.common;
 
-import java.time.LocalDateTime;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class ApiResponse<T> {
 
     private boolean success;
     private String message;
     private T data;
-    private LocalDateTime timestamp = LocalDateTime.now();
+    private LocalDateTime timestamp;
 
     public ApiResponse(boolean success, String message, T data) {
         this.success = success;
@@ -22,6 +20,11 @@ public class ApiResponse<T> {
         this.data = data;
         this.timestamp = LocalDateTime.now();
     }
+
+    public ApiResponse(boolean success, String message, T data, LocalDateTime timestamp) {
+        this.success = success;
+        this.message = message;
+        this.data = data;
+        this.timestamp = timestamp;
+    }
 }
-
-
